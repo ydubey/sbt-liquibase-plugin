@@ -30,7 +30,7 @@ lazy val buildSettings = Seq(
     )
   ),
   developers := List(
-    Developer(id="ydubey_elega9t", name="Yogesh Dubey", email="yogesh@elega9t.com", url=url("https://www.elega9t.com"))
+    Developer(id="ydubey.elega9t", name="Yogesh Dubey", email="yogesh@elega9t.com", url=url("https://www.elega9t.com"))
   ),
   publishTo := Some(
   if (isSnapshot.value)

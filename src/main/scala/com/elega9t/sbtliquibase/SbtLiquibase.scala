@@ -141,7 +141,7 @@ object SbtLiquibase extends AutoPlugin {
 
       liquibaseUpdate := liquibaseInstance.value().execAndClose(_.update(liquibaseContext.value)),
 
-      liquibaseUpdateSql := liquibaseInstance.value().execAndClose(_.update(liquibaseContext.value, new OutputStreamWriter(System.out))),
+      liquibaseUpdateSql := liquibaseInstance.value().execAndClose(_.update(liquibaseContext.value, outputWriter.value)),
 
       liquibaseStatus := liquibaseInstance.value().execAndClose {
         _.reportStatus(true, liquibaseContext.value, new OutputStreamWriter(System.out))
@@ -176,14 +176,14 @@ object SbtLiquibase extends AutoPlugin {
       liquibaseRollbackSql := {
         val tag = token(Space ~> StringBasic, "<tag>").parsed
         liquibaseInstance.value().execAndClose {
-          _.rollback(tag, liquibaseContext.value, new OutputStreamWriter(System.out))
+          _.rollback(tag, liquibaseContext.value, outputWriter.value)
         }
       },
 
       liquibaseRollbackCountSql := {
         val count = token(Space ~> IntBasic, "<count>").parsed
         liquibaseInstance.value().execAndClose {
-          _.rollback(count, liquibaseContext.value, new OutputStreamWriter(System.out))
+          _.rollback(count, liquibaseContext.value, outputWriter.value)
         }
       },
 
@@ -195,12 +195,12 @@ object SbtLiquibase extends AutoPlugin {
       liquibaseRollbackToDateSql := {
         val date = token(Space ~> DateParser, "<date/time>").parsed
         liquibaseInstance.value().execAndClose {
-          _.rollback(date, liquibaseContext.value, new OutputStreamWriter(System.out))
+          _.rollback(date, liquibaseContext.value, outputWriter.value)
         }
       },
 
       liquibaseFutureRollbackSql := liquibaseInstance.value().execAndClose {
-        _.futureRollbackSQL(liquibaseContext.value, new OutputStreamWriter(System.out))
+        _.futureRollbackSQL(liquibaseContext.value, outputWriter.value)
       },
 
       liquibaseTag := {
