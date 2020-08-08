@@ -6,7 +6,7 @@ SBT Liquibase plugin for SBT 1
 
 Add the following to your `project/plugins.sbt`:
 
-    addSbtPlugin("com.elega9t" % "sbt-liquibase" % "1.0.0-SNAPSHOT")
+    addSbtPlugin("com.elega9t" % "sbt-liquibase" % "1.0.0")
 
 ### Step 2: Activate sbt-liquibase-plugin in your build
 
