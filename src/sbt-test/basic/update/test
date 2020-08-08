@@ -1,0 +1,7 @@
+# check update
+> liquibaseUpdate
+# check if update ran
+> checkTables
+# check if multiple tasks in the single run works well
+> multipleTasks
+> checkTables
